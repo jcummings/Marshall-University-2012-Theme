@@ -22,13 +22,15 @@
 // Accent colors
 // -------------------------
 @blue:                  #049cdb;
-@blueDark:              #0064cd;
-@green:                 #46a546;
-@red:                   #9d261d;
-@yellow:                #ffc40d;
-@orange:                #f89406;
+@blueDark:              #27318B;
+@greenLight:            lighten(@green, 10%);
+@green:                 #04954A;
+@greenDark:             darken(@green, 15%);
+@red:                   #BF311A;
+@yellow:                #C4960C;
+@orange:                #BC5000;
 @pink:                  #c3325f;
-@purple:                #7a43b6;
+@purple:                #56004E;
 
 
 // Scaffolding
@@ -39,19 +41,19 @@
 
 // Links
 // -------------------------
-@linkColor:             #08c;
-@linkColorHover:        darken(@linkColor, 15%);
+@linkColor:             darken(@green, 4%);
+@linkColorHover:        darken(@linkColor, 8%);
 
 
 // Typography
 // -------------------------
 @sansFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
-@serifFontFamily:       Georgia, "Times New Roman", Times, serif;
+@serifFontFamily:       'Crimson Text', "Times New Roman", Times, serif;
 @monoFontFamily:        Menlo, Monaco, Consolas, "Courier New", monospace;
 
-@baseFontSize:          13px;
+@baseFontSize:          15px;
 @baseFontFamily:        @sansFontFamily;
-@baseLineHeight:        18px;
+@baseLineHeight:        22.5px;
 @altFontFamily:         @serifFontFamily;
 
 @headingsFontFamily:    inherit; // empty to use BS default, @baseFontFamily
@@ -144,13 +146,13 @@
 
 // Navbar
 // -------------------------
-@navbarHeight:                    40px;
-@navbarBackground:                @grayDarker;
+@navbarHeight:                    45px;
+@navbarBackground:                @black;
 @navbarBackgroundHighlight:       @grayDark;
 
-@navbarText:                      @grayLight;
+@navbarText:                      @white;
 @navbarLinkColor:                 @grayLight;
-@navbarLinkColorHover:            @white;
+@navbarLinkColorHover:            @green;
 @navbarLinkColorActive:           @navbarLinkColorHover;
 @navbarLinkBackgroundHover:       transparent;
 @navbarLinkBackgroundActive:      @navbarBackground;

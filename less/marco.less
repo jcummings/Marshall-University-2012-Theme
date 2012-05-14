@@ -1,0 +1,275 @@
+//Marco.less -- Basic Marco structure and theming.
+//--------------------------------------------------
+// HTML & Body
+html, body {
+  height: 100%;
+}
+body {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  padding-top: 40px;
+  background: @white url('../img/overlay.png') repeat;
+  height: 100%;
+}
+//Non-Semantic Helper Classes
+.visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
+.invisible { visibility: hidden; }
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+// Alignment
+.alignleft {
+    display: inline;
+    float: left;
+    margin-right: 1.625em;
+}
+p.alignleft {
+  text-align: left;
+}
+.aligncenter {
+    clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+p.aligncenter {
+  text-align: center;
+}
+.alignright {
+	display: inline;
+	float: right;
+	margin-left: 1.625em;
+}
+p.alignright {
+  text-align: right;
+}
+//Base ----------------------------------------------------------------
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ */
+::-moz-selection { background: @grayDark; color: #fff; text-shadow: none; }
+::selection { background: @grayDark; color: #fff; text-shadow: none; }
+//Wrapper
+#wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -130px;
+  background: transparent url('../img/grid_noise.jpg') repeat-x left top;
+}
+#content.container, #primary {
+ .clearfix();
+ background: @white;
+ .box-shadow(0 0 20px rgba(0,0,0,0.5));
+ padding: 20px;
+ .border-radius(5px);
+ border: darken(@white, 15%) 1px solid;
+ margin: 20px auto 25px auto;
+}
+//Branding --------------------------------------------------------------
+#branding {
+ background: #f5f5f5;   
+}
+.hero-unit h1 {
+text-shadow: 1px 1px #fff,-1px -1px #999;
+color: #bbb;
+}
+.navbar a.brand {
+ text-indent: -9000px;
+ width: 159px;
+ height: 42px;
+ overflow: hidden;
+ padding: 0;
+ background: transparent url('../img/mu_header_logo.png') no-repeat left center;
+ }
+.page-header.hero-unit {
+ padding: 20px;
+ margin-top: 0;
+ background-color: #f8f8f8;
+ h1 {
+    font-size: 45px;
+    color: #888;
+   }
+   h2 {
+   color: @gray;
+   }
+}
+
+
+// news feed ---------------------------------------------------
+  .news-feed-item {
+ .well();
+ height:  auto;
+ min-height: 250px;
+ position: relative;
+ .meta {
+    position: absolute;
+    bottom: -10px;
+    right: 10px;
+    height: 22.5px;
+    }
+img {
+   max-height: 150px;
+   max-width: auto;
+   margin-right: 15px;
+   }
+}
+.news-feed-auto {
+ height: auto;
+ min-height: 100px;
+}
+.well {
+ background: #fff;
+ padding: 10px;
+}
+//Page Elements -------------------------------------------------------
+hr {
+ margin: @baseLineHeight / 2 0;
+}
+.btn.wide {
+ width: auto;
+ display: block;
+ padding-right: 9px;
+ padding-left: 9px;
+ }
+.nav-list .divider {
+height: 1px;
+margin: 8px 1px;
+overflow: hidden;
+background-color: #e5e5e5;
+border-bottom: 1px solid #ffffff;
+}
+// Blockquotes
+blockquote {
+  border-left: 5px solid @green;
+ &.pull-right {
+    border-left: 0;
+    border-right: 5px solid @green;
+  }
+}
+//Custom Icons
+.icon-emergency {
+    background: url("../img/emergency_icon.png") no-repeat center center;
+}
+@spriteGrid: 30px;
+.ie7-inline-block();
+  .sprite(@x, @y) {
+  background: url('../img/social_icons_white.png') no-repeat;
+  background-position: -(@x*@spriteGrid+5) -(@y*@spriteGrid);
+  background-color: #ccc;
+  content: "";
+  height: 30px;
+  width: 30px;
+  text-indent: -9000px;
+  .border-radius(2px);
+  .box-shadow(inset 0px 0px 1px 1px rgba(0, 0, 0, .1));
+  margin: 5px;
+  :hover {
+  background-color: #999;
+    }
+}
+
+.social-icons {
+  margin-left: 10px;
+  height: 30px;
+  i:hover, b:hover {
+    background-color: #999;
+ }
+}
+.icon-twitter  {
+.sprite(0, 0);
+}
+.icon-facebook {
+.sprite(1, 0);
+}
+.icon-youtube {
+.sprite(2, 0);
+}
+.icon-rss {
+.sprite(3, 0);
+}
+//Media Specific ----------------------------------------------------------
+@media (max-width: 980px) {
+      /* Remove any padding from the body */
+  body {
+    padding-top: 0;
+  }
+  .navbar .nav > li > a, .navbar .dropdown-menu a {
+ color: #fff !important;
+}
+}
+@media (max-width: 768px) {
+  body {
+    margin-top: 0;
+  }
+  #wrapper {
+    background: none;
+  }
+  #wrapper {
+   margin-top: 0;
+   padding: 0;
+   .box-shadow(0 0 0 rgba(0,0,0,0));
+   padding-top: 20px;
+   .border-radius(0);
+   border: 0;
+   }
+
+   //news feed
+  .news-feed-item {
+     .well();
+     height:  auto;
+     img { max-height: 100px; float:none; }
+     p {display:block;}
+   }
+}
+h1 {  
+  #font > .serif(@baseFontSize * 2, 300, @baseLineHeight * 1.5);
+     small {
+    font-size: 18px;
+  }
+}
+h2 {
+  #font > .sans-serif(@baseFontSize * 1.5, 500, @baseLineHeight * 1.5);
+  font-family: 'Open Sans Condensed', serif;
+  color: @gray;
+  small {
+    font-size: 18px;
+  }
+}
+h3 {
+  color: @gray;
+  line-height: @baseLineHeight;
+  #font > .uppercase();
+  #font > .sans-serif(@baseFontSize * 1.25, 500, @baseLineHeight * 1.25);
+  font-family: 'Open Sans Condensed', serif;
+  small {
+    font-size: @baseFontSize * .8;
+  }
+}
+h4, h5, h6 {
+  line-height: @baseLineHeight;
+}
+h4 {
+  font-size: @baseFontSize * 1.1;
+  small {
+    font-size: 12px;
+  }
+}
+h5 {
+  font-size: @baseFontSize;
+}
+h6 {
+  font-size: 13px;
+}
+@media (max-width: 767px) {
+#primary-nav {    margin-left: -20px;
+margin-right: -20px;
+}
+}
