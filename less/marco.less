@@ -64,8 +64,7 @@ p.alignright {
   margin: 0 auto -130px;
   background: transparent url('../img/grid_noise.jpg') repeat-x left top;
 }
-#content.container, #primary {
- .clearfix();
+#content.container, #wrap {
  background: @white;
  .box-shadow(0 0 20px rgba(0,0,0,0.5));
  padding: 20px;
@@ -88,18 +87,27 @@ color: #bbb;
  overflow: hidden;
  padding: 0;
  background: transparent url('../img/mu_header_logo.png') no-repeat left center;
+ background-size: auto 40px;
  }
 .page-header.hero-unit {
  padding: 20px;
  margin-top: 0;
- background-color: #f8f8f8;
+ background-color: #fafafa;
  h1 {
     font-size: 45px;
-    color: #888;
+    color: @grayDark;
+  a {
+	color: @grayDark;
+	text-decoration: none;
+	}
    }
    h2 {
    color: @gray;
    }
+   p {
+   line-height: 27px;
+   }
+
 }
 
 
@@ -133,6 +141,10 @@ img {
 hr {
  margin: @baseLineHeight / 2 0;
 }
+img {
+height: auto;
+}
+
 .btn.wide {
  width: auto;
  display: block;
@@ -154,6 +166,24 @@ blockquote {
     border-right: 5px solid @green;
   }
 }
+//Advanced Menu Sub-Item Arrow
+.widget_advanced_menu .sub-menu li {
+list-style-image: url(../img/submenu-arrow.png);
+}
+.widget_advanced_menu.well {
+min-height: 0;
+padding: 0;
+margin-bottom: 0;
+background-color: transparent;
+border: 0;
+-webkit-border-radius: 0;
+-moz-border-radius: 0;
+border-radius: 0;
+-webkit-box-shadow: 0;
+-moz-box-shadow: 0;
+box-shadow: 0;
+}
+
 //Custom Icons
 .icon-emergency {
     background: url("../img/emergency_icon.png") no-repeat center center;
@@ -204,6 +234,12 @@ blockquote {
   .navbar .nav > li > a, .navbar .dropdown-menu a {
  color: #fff !important;
 }
+   #primary-nav .container {
+   width: auto;
+   }
+footer {
+padding-top: 20px;
+}
 }
 @media (max-width: 768px) {
   body {
@@ -221,6 +257,10 @@ blockquote {
    border: 0;
    }
 
+footer {
+margin-left: -20px;
+margin-right: -20px;
+}
    //news feed
   .news-feed-item {
      .well();
@@ -272,4 +312,10 @@ h6 {
 #primary-nav {    margin-left: -20px;
 margin-right: -20px;
 }
+}
+//Retina Display Specific ---------------------------------------
+@media(-webkit-min-device-pixel-ratio: 2) {
+    .navbar a.brand {
+ background: transparent url('../img/mu_header_logo-2x.png') no-repeat left center;
+ }
 }
