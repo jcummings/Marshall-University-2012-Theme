@@ -4824,7 +4824,6 @@ h2 {
   line-height: 33.75px;
   font-family: 'Open Sans Condensed', sans-serif;
   color: #555555;
-  text-shadow: 1px 1px 0 #fafafa, 2px 2px 0 rgba(95, 149, 176, 0.5), 0 0 1px #fafafa;
 }
 h2 small {
   font-size: 18px;
@@ -4860,6 +4859,9 @@ h5 {
 }
 h6 {
   font-size: 13px;
+}
+.heading-shadow {
+  text-shadow: 1px 1px 0 #fafafa, 2px 2px 0 rgba(95, 149, 176, 0.5), 0 0 1px #fafafa;
 }
 @media (max-width: 767px) {
   #primary-nav {
