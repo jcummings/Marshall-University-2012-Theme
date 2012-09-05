@@ -1,3 +1,4 @@
+/*Social Icons Sprite*/
 *display: inline;
 *zoom: 1;/*!
  * Bootstrap v2.0.4
@@ -117,7 +118,7 @@ textarea {
   clear: both;
 }
 .hide-text {
-  font: a;
+  font: 0/0 a;
   color: transparent;
   text-shadow: none;
   background-color: transparent;
@@ -2005,7 +2006,7 @@ table .span24 {
 .open {
   *z-index: 1000;
 }
-.open > .dropdown-menu {
+.open  > .dropdown-menu {
   display: block;
 }
 .pull-right > .dropdown-menu {
