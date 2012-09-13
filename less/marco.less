@@ -161,45 +161,13 @@ box-shadow: 0;
 
 //Custom Icons
 .icon-emergency {
-    background: url("../img/emergency_icon.png") no-repeat center center;
-}
-@spriteGrid: 30px;
-.ie7-inline-block();
-  .sprite(@x, @y) {
-  background: url('../img/social_icons_white.png') no-repeat;
-  background-position: -(@x*@spriteGrid+5) -(@y*@spriteGrid);
-  background-color: #ccc;
-  content: "";
-  height: 30px;
-  width: 30px;
-  text-indent: -9000px;
-  .border-radius(2px);
-  .box-shadow(inset 0px 0px 1px 1px rgba(0, 0, 0, .1));
-  margin: 5px;
-  :hover {
-  background-color: #999;
-    }
-}
+    background: url("../img/emergency_icon.png") no-repeat center center; }
+.icon-rss                     { background-position: 0      -168px; }
+.icon-smugmug                 { background-position: -24px  -168px; }
+.icon-twitter                 { background-position: -48px  -168px; }
+.icon-facebook                { background-position: -72px  -168px; }
+.icon-youtube                 { background-position: -96px  -168px; }
 
-.social-icons {
-  margin-left: 10px;
-  height: 30px;
-  i:hover, b:hover {
-    background-color: #999;
- }
-}
-.icon-twitter  {
-.sprite(0, 0);
-}
-.icon-facebook {
-.sprite(1, 0);
-}
-.icon-youtube {
-.sprite(2, 0);
-}
-.icon-rss {
-.sprite(3, 0);
-}
 //ZURB responsive Embeds video on all devices http://www.zurb.com/article/865/responsive-video-embeds-on-all-devices 
 
 .flex-video {
