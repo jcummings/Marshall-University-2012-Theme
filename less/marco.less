@@ -79,6 +79,7 @@ p.alignright {
 .hero-unit h1 {
 text-shadow: 1px 1px #fff,-1px -1px #999;
 color: #bbb;
+font-family: @serifFontFamily;
 }
 .navbar a.brand {
  text-indent: -9000px;
@@ -90,26 +91,36 @@ color: #bbb;
  background-size: auto 40px;
  }
 .page-header.hero-unit {
- padding: 0;
+ padding: 10px;
  margin-top: 0;
  background-color: #fafafa;
  h1 {
-    font-size: 45px;
-    color: @grayDark;
+	 font-size: 45.234px;
+     color: @grayDark;
   a {
 	color: @grayDark;
 	text-decoration: none;
 	}
    }
-   h2 {
-   color: @gray;
-   }
    p {
-   line-height: 27px;
-   padding: 10px;
-   }
-
+	line-height: 18px*1.44;  
+  }
 }
+
+// Headings
+// -------------------------
+
+h1 { font-size: 31.990px; line-height: 31.990px*1.44; }
+h2 { font-size: 26px; line-height: 26px*1.44; }
+h3 { font-size: 22.624px; line-height: 22.624px*1.44; }
+h4 { font-size: 18.388px; line-height: 18.388px*1.44; }
+h5 { font-size: 16px; line-height: 16px*1.44; }
+h6 { font-size: 13.004px; line-height: 13.004px*1.44; }
+
+h1 small { font-size: 22.624px; }
+h2 small { font-size: 18.388px; }
+h3 small { font-size: 16px; }
+h4 small { font-size: 13.004px; }
 
 
 //Page Elements -------------------------------------------------------
@@ -140,23 +151,6 @@ blockquote {
     border-left: 0;
     border-right: 5px solid @green;
   }
-}
-//Advanced Menu Sub-Item Arrow
-.widget_advanced_menu .sub-menu li {
-list-style-image: url(../img/submenu-arrow.png);
-}
-.widget_advanced_menu.well {
-min-height: 0;
-padding: 0;
-margin-bottom: 0;
-background-color: transparent;
-border: 0;
--webkit-border-radius: 0;
--moz-border-radius: 0;
-border-radius: 0;
--webkit-box-shadow: 0;
--moz-box-shadow: 0;
-box-shadow: 0;
 }
 
 //Custom Icons
@@ -231,45 +225,7 @@ margin-left: -20px;
 margin-right: -20px;
 }
 }
-h1 {  
-  #font > .serif(@baseFontSize * 2, 300, @baseLineHeight * 1.5);
-     small {
-    font-size: 18px;
-  }
-}
-h2 {
-  #font > .sans-serif(@baseFontSize * 1.5, 500, @baseLineHeight * 1.5);
-  font-family: 'Open Sans Condensed', sans-serif;
-  color: @gray;
-  small {
-    font-size: 18px;
-  }
-}
-h3 {
-  color: @gray;
-  line-height: @baseLineHeight;
-  #font > .uppercase();
-  #font > .sans-serif(@baseFontSize * 1.25, 500, @baseLineHeight * 1.25);
-  font-family: 'Open Sans Condensed', serif;
-  small {
-    font-size: @baseFontSize * .8;
-  }
-}
-h4, h5, h6 {
-  line-height: @baseLineHeight;
-}
-h4 {
-  font-size: @baseFontSize * 1.1;
-  small {
-    font-size: 12px;
-  }
-}
-h5 {
-  font-size: @baseFontSize;
-}
-h6 {
-  font-size: 13px;
-}
+
 .heading-shadow {
     text-shadow: 1px 1px 0 #FAFAFA, 2px 2px 0 rgba(95, 149, 176, 0.5), 0 0 1px #FAFAFA;
 }
@@ -286,12 +242,7 @@ margin-right: -20px;
 }
 
 //Imported Font Faces
-@font-face {
-  font-family: 'Crimson Text';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Crimson Text'), local('CrimsonText-Roman'), url(http://themes.googleusercontent.com/static/fonts/crimsontext/v3/3IFMwfRa07i-auYR-B-zNaRDOzjiPcYnFooOUGCOsRk.woff) format('woff');
-}
+
 @font-face {
   font-family: 'Open Sans Condensed';
   font-style: normal;
