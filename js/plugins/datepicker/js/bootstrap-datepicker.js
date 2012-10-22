@@ -456,7 +456,6 @@
 							}
 							this._setDate(UTCDate(year, month, day,0,0,0,0));
 						}
-						this.hide();
 						break;
 				}
 			}
