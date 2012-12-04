@@ -18,7 +18,7 @@ input[type="search"]::-webkit-search-decoration,input[type="search"]::-webkit-se
 textarea{overflow:auto;vertical-align:top;}
 .clearfix{*zoom:1;}.clearfix:before,.clearfix:after{display:table;content:"";line-height:0;}
 .clearfix:after{clear:both;}
-.hide-text{font:a;color:transparent;text-shadow:none;background-color:transparent;border:0;}
+.hide-text{font:0/0 a;color:transparent;text-shadow:none;background-color:transparent;border:0;}
 .input-block-level{display:block;width:100%;min-height:30px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
 body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:16px;line-height:23.04px;color:#444444;background-color:#ffffff;}
 a{color:#038140;text-decoration:none;}
@@ -875,6 +875,7 @@ p.alignright{text-align:right;}
 .navbar a.brand{text-indent:-9000px;width:159px;height:42px;overflow:hidden;padding:0;background:transparent url('../img/mu_header_logo.png') no-repeat left center;background-size:auto 40px;}
 .page-header.hero-unit{padding:10px;margin-top:0;background-color:#fafafa;}.page-header.hero-unit h1{font-size:45.234px;color:#444444;}.page-header.hero-unit h1 a{color:#444444;text-decoration:none;}
 .page-header.hero-unit p{line-height:25.919999999999998px;}
+h1,h2,h3,h4,h5,h6{margin:0 0 11.52px;}
 h1{font-size:31.990px;line-height:46.065599999999996px;}
 h2{font-size:26px;line-height:37.44px;}
 h3{font-size:22.624px;line-height:32.578559999999996px;}
