@@ -159,7 +159,7 @@
 .input-block-level {
   display: block;
   width: 100%;
-  min-height: 30px;        // Make inputs at least the height of their button counterpart
+  min-height: @inputHeight; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
   .box-sizing(border-box); // Makes inputs behave like true block-level elements
 }
 
@@ -168,7 +168,7 @@
 // Mixin for form field states
 .formFieldState(@textColor: #555, @borderColor: #ccc, @backgroundColor: #f5f5f5) {
   // Set the text color
-  > label,
+  .control-label,
   .help-block,
   .help-inline {
     color: @textColor;
@@ -188,7 +188,8 @@
     .box-shadow(inset 0 1px 1px rgba(0,0,0,.075)); // Redeclare so transitions work
     &:focus {
       border-color: darken(@borderColor, 10%);
-      .box-shadow(inset 0 1px 1px rgba(0,0,0,.075), 0 0 6px lighten(@borderColor, 20%));
+      @shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 6px lighten(@borderColor, 20%);
+      .box-shadow(@shadow);
     }
   }
   // Give a small background color for input-prepend/-append
@@ -253,12 +254,10 @@
 }
 
 // Drop shadows
-.box-shadow(@shadowA, @shadowB:X, ...){
-  // Multiple shadow solution from http://toekneestuck.com/blog/2012/05/15/less-css-arguments-variable/
-  @props: ~`"@{arguments}".replace(/[\[\]]|\,\sX/g, '')`;
-  -webkit-box-shadow: @props;
-     -moz-box-shadow: @props;
-          box-shadow: @props;
+.box-shadow(@shadow) {
+  -webkit-box-shadow: @shadow;
+     -moz-box-shadow: @shadow;
+          box-shadow: @shadow;
 }
 
 // Transitions
@@ -273,6 +272,12 @@
      -moz-transition-delay: @transition-delay;
        -o-transition-delay: @transition-delay;
           transition-delay: @transition-delay;
+}
+.transition-duration(@transition-duration) {
+  -webkit-transition-duration: @transition-duration;
+     -moz-transition-duration: @transition-duration;
+       -o-transition-duration: @transition-duration;
+          transition-duration: @transition-duration;
 }
 
 // Transformations
@@ -303,6 +308,7 @@
       -ms-transform: skewX(@x) skewY(@y); // See https://github.com/twitter/bootstrap/issues/4885
        -o-transform: skew(@x, @y);
           transform: skew(@x, @y);
+  -webkit-backface-visibility: hidden; // See https://github.com/twitter/bootstrap/issues/5319
 }
 .translate3d(@x, @y, @z) {
   -webkit-transform: translate3d(@x, @y, @z);
@@ -330,7 +336,7 @@
 }
 
 // Background sizing
-.background-size(@size){
+.background-size(@size) {
   -webkit-background-size: @size;
      -moz-background-size: @size;
        -o-background-size: @size;
@@ -442,6 +448,17 @@
     background-image: -o-linear-gradient(@deg, @startColor, @endColor); // Opera 11.10
     background-image: linear-gradient(@deg, @startColor, @endColor); // Standard, IE10
   }
+  .horizontal-three-colors(@startColor: #00b3ee, @midColor: #7a43b6, @colorStop: 50%, @endColor: #c3325f) {
+    background-color: mix(@midColor, @endColor, 80%);
+    background-image: -webkit-gradient(left, linear, 0 0, 0 100%, from(@startColor), color-stop(@colorStop, @midColor), to(@endColor));
+    background-image: -webkit-linear-gradient(left, @startColor, @midColor @colorStop, @endColor);
+    background-image: -moz-linear-gradient(left, @startColor, @midColor @colorStop, @endColor);
+    background-image: -o-linear-gradient(left, @startColor, @midColor @colorStop, @endColor);
+    background-image: linear-gradient(to right, @startColor, @midColor @colorStop, @endColor);
+    background-repeat: no-repeat;
+    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@startColor),argb(@endColor))); // IE9 and down, gets no color-stop at all for proper fallback
+  }
+
   .vertical-three-colors(@startColor: #00b3ee, @midColor: #7a43b6, @colorStop: 50%, @endColor: #c3325f) {
     background-color: mix(@midColor, @endColor, 80%);
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@startColor), color-stop(@colorStop, @midColor), to(@endColor));
@@ -452,7 +469,7 @@
     background-repeat: no-repeat;
     filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@startColor),argb(@endColor))); // IE9 and down, gets no color-stop at all for proper fallback
   }
-  .radial(@innerColor: #555, @outerColor: #333)  {
+  .radial(@innerColor: #555, @outerColor: #333) {
     background-color: @outerColor;
     background-image: -webkit-gradient(radial, center center, 0, center center, 460, from(@innerColor), to(@outerColor));
     background-image: -webkit-radial-gradient(circle, @innerColor, @outerColor);
@@ -505,7 +522,7 @@
   .reset-filter();
 
   // in these cases the gradient won't cover the background, so we override
-  &:hover, &:active, &.active, &.disabled, &[disabled] {
+  &:hover, &:focus, &:active, &.active, &.disabled, &[disabled] {
     color: @textColor;
     background-color: @endColor;
     *background-color: darken(@endColor, 5%);
@@ -563,13 +580,13 @@
   .core (@gridColumnWidth, @gridGutterWidth) {
 
     .spanX (@index) when (@index > 0) {
-      (~".span@{index}") { .span(@index); }
+      .span@{index} { .span(@index); }
       .spanX(@index - 1);
     }
     .spanX (0) {}
 
     .offsetX (@index) when (@index > 0) {
-      (~".offset@{index}") { .offset(@index); }
+      .offset@{index} { .offset(@index); }
       .offsetX(@index - 1);
     }
     .offsetX (0) {}
@@ -608,14 +625,14 @@
   .fluid (@fluidGridColumnWidth, @fluidGridGutterWidth) {
 
     .spanX (@index) when (@index > 0) {
-      (~".span@{index}") { .span(@index); }
+      .span@{index} { .span(@index); }
       .spanX(@index - 1);
     }
     .spanX (0) {}
 
     .offsetX (@index) when (@index > 0) {
-      (~'.offset@{index}') { .offset(@index); }
-      (~'.offset@{index}:first-child') { .offsetFirstChild(@index); }
+      .offset@{index} { .offset(@index); }
+      .offset@{index}:first-child { .offsetFirstChild(@index); }
       .offsetX(@index - 1);
     }
     .offsetX (0) {}
@@ -648,6 +665,11 @@
         margin-left: 0;
       }
 
+      // Space grid-sized controls properly if multiple per line
+      .controls-row [class*="span"] + [class*="span"] {
+        margin-left: @fluidGridGutterWidth;
+      }
+
       // generate .spanX and .offsetX
       .spanX (@gridColumns);
       .offsetX (@gridColumns);
@@ -658,7 +680,7 @@
   .input(@gridColumnWidth, @gridGutterWidth) {
 
     .spanX (@index) when (@index > 0) {
-      (~"input.span@{index}, textarea.span@{index}, .uneditable-input.span@{index}") { .span(@index); }
+      input.span@{index}, textarea.span@{index}, .uneditable-input.span@{index} { .span(@index); }
       .spanX(@index - 1);
     }
     .spanX (0) {}
@@ -682,5 +704,4 @@
     .spanX (@gridColumns);
 
   }
-
 }
